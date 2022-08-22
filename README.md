@@ -1,2 +1,6 @@
 # Projeto_INF284
 Implementação de métodos heurísticos para resolver uma variante do Problema do Caixeiro Viajante Simétrico (TSP).
+
+A variante em questão leva em consideração um conjunto de entregas a serem realizadas. O caixeiro não é obrigado a fazer todas as entregas, mas só recebe pelas entregas realizadas (isto é, quando a origem da entrega aparece antes do destino na rota do caixeiro). Dessa forma, considera-se dois dados adicionais, k e v, onde k representa o número de entregas e v o valor de cada uma. Para simplificar a entrada, a origem será sempre a cidade 1 e as k entregas são (2i -> 2i + 1) para i = 1...k. Assim, para k = 1 e v = 1, temos uma única entrega, de 2 para 3, de valor 1. Para k = 3 e v = 10 temos três entregas, de 2 para 3, de 4 para 5 e de 6 para 7, cada uma de valor 10. O custo da rota será o valor da distância, descontando as entregas. As instâncias utilizadas são da TSPLIB e estão na pasta src/main/resources/Instancias/.
+
+Para resolver o problema foi implementando as seguintes meta-heurísticas: Iterated Local Search (ILS), Guided Local Search (GLS) e Genetic Algoritm (GA).

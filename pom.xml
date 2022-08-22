@@ -1,0 +1,90 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.inf284</groupId>
+  <artifactId>tspd</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>tspd</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>31.1-jre</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/src/main/resources/lib/guava-31.1-jre.jar</systemPath>
+    </dependency>
+
+  </dependencies>
+<build>
+  <plugins>
+    <plugin>
+      <artifactId>maven-jar-plugin</artifactId>
+      <version>3.0.2</version>
+      <configuration>
+        <archive>
+          <manifest>
+            <addClasspath>true</addClasspath>
+            <classpathPrefix>lib/</classpathPrefix>
+            <mainClass>com.inf284.App</mainClass>
+          </manifest>
+          <manifestEntries>
+            <Class-Path>.</Class-Path>
+          </manifestEntries>
+        </archive>
+        <outputDirectory>${project.build.directory}/Projeto</outputDirectory>
+            <excludes>
+              <exclude>**/Instancias/**</exclude>
+              <exclude>**/lib/**</exclude>
+              <exclude>Resultados.csv</exclude>
+            </excludes>
+        </configuration>
+    </plugin>
+
+    <plugin>
+      <artifactId>maven-resources-plugin</artifactId>
+      <version>2.6</version>
+      <executions>
+        <execution>
+          <id>copy-resources</id>
+          <phase>validate</phase>
+          <goals>
+            <goal>copy-resources</goal>
+          </goals>
+          <configuration>
+            <outputDirectory>${basedir}/target/Projeto</outputDirectory>
+            <resources>
+              <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                  <include>Instancias/**</include>
+                  <include>lib/**</include>
+                </includes>
+                <excludes>
+                  <exclude>Resultados.csv</exclude>
+                </excludes>
+              </resource>
+            </resources>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
+</build>
+
+</project>
